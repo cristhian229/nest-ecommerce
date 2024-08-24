@@ -10,9 +10,12 @@ import { OrdersModule } from './orders/orders.module';
 import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [UsersModule, ProductsModule, OrdersModule, AuthModule],
+  imports: [UsersModule, ProductsModule, OrdersModule, AuthModule, TypeOrmModule.forRoot({
+    type:'mysql'
+  })],
   controllers: [AppController, UsersController, ProductsController, AuthController],
   providers: [AppService, OrdersService, AuthService],
 })
